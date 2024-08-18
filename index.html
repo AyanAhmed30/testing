@@ -14,7 +14,70 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                },<!DOCTYPE html>
+<html>
+<head>
+    <title>Run Command</title>{%extends 'base.html'%}
+    {% load static %}
+    
+    {%block title%} Create New Topic {%endblock%}
+    
+    
+    {% block content %}
+        <!-- Page Content -->
+        <div class="container mt-5">
+            <h1>Welcome to My Website</h1>
+            <p>This is a description of our website and the services we offer.</p>
+    
+            <!-- Services Section -->
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="{% static 'icon/map_icon.png' %}" class="card-img-top" alt="Service 1">
+                        <div class="card-body">
+                            <h5 class="card-title">GEE</h5>
+                            <p class="card-text">Description of Service 1.</p>
+                            <a href="{% url 'home' %}" class="btn btn-outline-dark">Free trial</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                   
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                   
+                </div>
+            </div>
+        </div>
+    
+        {% endblock %}
+</head>
+<body>
+    <h1>Run Command</h1>
+    <button id="runCommand">Run Server Command</button>
+    <pre id="result"></pre>
+
+<script>
+        document.getElementById('runCommand').addEventListener('click', () => {
+            fetch('https://your-backend-url.com/run-command/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('result').textContent = 'Error: ' + error;
+            });
+        });
+    </script> 
+</body>
+</html>
+
             })
             .then(response => response.json())
             .then(data => {
